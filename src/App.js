@@ -1,9 +1,12 @@
 import React, { Component } from 'react';
+
 import Section from './components/Section/Section';
 import FeedbackOptions from './components/FeedbackOptions/FeedbackOptions';
 import Statistics from './components/Statistics/Statistics';
 import Notification from './components/Notification/Notification';
+
 import './index.css';
+import './App.css';
 
 class App extends Component {
     state = {
@@ -19,9 +22,11 @@ class App extends Component {
             };
         });
     };
+
     countTotalFeedback = () => {
         const { good, neutral, bad } = this.state;
         const total = good + neutral + bad;
+
         return total;
     };
 
@@ -31,15 +36,17 @@ class App extends Component {
 
         return totalFeedback === 0 ? 0 : Math.round(positive);
     };
+
     render() {
         const { good, neutral, bad } = this.state;
         const totalFeedback = this.countTotalFeedback();
+        const { handleCountFeedback } = this;
         return (
-            <div>
+            <div className="main">
                 <Section title="Please leave feedback">
                     <FeedbackOptions
                         options={this.state}
-                        onLeaveFeedback={this.handleCountFeedback}
+                        onLeaveFeedback={handleCountFeedback}
                     />
                 </Section>
                 <Section title="Statistics">
@@ -52,7 +59,7 @@ class App extends Component {
                             positivePercentage={this.countPositiveFeedbackPercentage()}
                         />
                     ) : (
-                        <Notification />
+                        <Notification message="No feedback given" />
                     )}
                 </Section>
             </div>
