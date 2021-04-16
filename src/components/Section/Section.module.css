@@ -1,9 +1,9 @@
 .section {
     margin-bottom: 0;
+    margin: auto;
     width: 50%;
     display: block;
 }
 .title {
     color: blueviolet;
-    margin-bottom: 0;
 }

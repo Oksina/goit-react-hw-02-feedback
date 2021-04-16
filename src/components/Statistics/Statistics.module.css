@@ -1,4 +1,6 @@
 .list {
     padding: 10px;
     justify-content: center;
+    padding-left: 50px;
+    font-family: cursive;
 }
